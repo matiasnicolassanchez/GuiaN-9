@@ -1,16 +1,21 @@
 nisbn = input("Ingrese el numero ISBN del libro\"SOLO LA PARTE NUMERICA\": ")
-cant_suma = 1
-sum_productos = 0
-multiplicador = 1
+digito_verificador = nisbn[9]
+# print(f"{digito_verificador}")
+digito = 0
+n = 0
 producto = 0
-ubicacion = str(0)
-digito = str
-while int(ubicacion) < 9:
-    digito = nisbn.index("0")
+sumatoria = 0
+verificador = 0
+for n in range(0, 9):
+    digito = int(nisbn[n])
+    producto = (digito * (n+1))
+    sumatoria = (sumatoria + producto)
+    # print(f"{sumatoria}")
 
-    producto = (nisbn.index("ubicacion") * multiplicador)
-    sum_productos = (sum_productos + producto)
-    ubicacion = (ubicacion + 1)
-    multiplicador = (multiplicador + 1)
+verificador = (sumatoria % 11)
+# print(f"{verificador}")
+if verificador == int(digito_verificador):
+    print(f"El número ISBN \"{nisbn}\" esta escrito correctamente")
 
-print(producto)
+else:
+    print(f"El número ISBN \"{nisbn}\" esta escrito incorrectamente")
